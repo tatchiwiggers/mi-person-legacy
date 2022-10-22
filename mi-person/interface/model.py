@@ -37,6 +37,6 @@ def sentiment_scores(sentence):
 
 if __name__ == "__main__" :
 
-	sentence = input("Enter a sentence to be analized: ")
+	sentence = input("Enter a sentence to be analyzed: ")
 
 	sentiment_scores(sentence)
