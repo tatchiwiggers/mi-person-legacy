@@ -28,7 +28,12 @@ clean:
 install:
 	@pip install . -U
 
+sentiment:
+	cd mi-person && python -c "from interface.main import sentiment; sentiment(':(')"
+
 all: clean install test black check_code
+
+go: sentiment
 
 count_lines:
 	@find ./ -name '*.py' -exec  wc -l {} \; | sort -n| awk \
