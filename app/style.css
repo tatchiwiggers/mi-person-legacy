@@ -1,0 +1,30 @@
+
+/* common styling  */
+span.css-10trblm.e16nr0p30{
+  text-align: center;
+  ;
+
+}
+
+/* crew display */
+div.css-1v0mbdj.etr89bj1 {
+  border-radius: 20%;
+  color: aquamarine;
+}
+div.css-13izhro.e1tzin5v0:{
+  background-image: red
+
+}
+
+
+
+/* header and footer*/
+
+header.css-18ni7ap.e8zbici2 {
+  background-image: linear-gradient(to left, rgba(89, 179, 103, 0.571), rgba(234, 255, 0, 0.465), rgba(255, 0, 0, 0.858));
+}
+
+
+footer{
+  visibility: hidden;
+}
