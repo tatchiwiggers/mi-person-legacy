@@ -1,0 +1,70 @@
+/* common styling  */
+span.css-10trblm.e16nr0p30{
+  text-align: center;
+  ;
+
+}
+
+div.css-6qob1r.e1fqkh3o3{
+  background-color: rgba(242, 243, 243, 0.2),
+
+}
+
+.css-fg4pbf {
+  background: #fffafa
+}
+
+/* text area */
+
+
+
+
+/* button home_page */
+
+.stButton > button {
+  color:#FFFFFF;
+  background-color:#C60C35;
+  font-size: 20px;
+  height: 60px;
+  widht: 100%;
+
+}
+
+st.Button > button:hover{
+  color: #FFFFFF;
+  background-color: #920000;
+  border-color: #920000;;
+  font-size: 20px;
+  height: 60px;
+  widht: 100%;
+}
+
+.css-12ttj6m {
+  border: 0px;
+  text-align: center
+}
+
+.css-fg4pbf {
+  text-align: center
+}
+
+/* crew display */
+div.css-1v0mbdj.etr89bj1 {
+  border-radius: 20%;
+  color: rgb(242, 243, 243);
+}
+
+
+/* header, footer and main menu*/
+
+header.css-18ni7ap.e8zbici2 {
+  background-image: linear-gradient(to left, rgba(89, 179, 103, 0.571), rgba(234, 255, 0, 0.465), rgba(255, 0, 0, 0.858));
+}
+
+footer{
+  visibility: hidden;
+}
+
+#MainMenu {
+  visibility: hidden;
+}
