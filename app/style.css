@@ -46,14 +46,32 @@ st.Button > button:hover{
 
 .css-fg4pbf {
   text-align: center
+
+}
+
+.stMarkdown img {
+  width: 30px;
+  height: 30px;
+
 }
 
 /* crew display */
+
 div.css-1v0mbdj.etr89bj1 {
   border-radius: 20%;
   color: rgb(242, 243, 243);
 }
 
+div.css-1v0mbdj.etr89bj1 img {
+  border-width: medium;
+  border-radius: 80px;
+  border-color:#C60C35;
+  border-style: solid;
+}
+
+.stMarkdown {
+  font-size: 50px;
+}
 
 /* header, footer and main menu*/
 

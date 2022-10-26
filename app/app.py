@@ -15,7 +15,7 @@ st.set_page_config(
 with st.sidebar:
     selected = option_menu(
         menu_title= None,
-        options=['mi-person', 'about-project','mi-analysis', 'mi-crew'],
+        options=['mi-person', 'mi-project','mi-analysis', 'mi-crew'],
         icons = ['house', 'megaphone', 'magic', 'people'],
         styles={
         "container": {"padding": "0!important", "background-color": "#fafafa"},
@@ -46,14 +46,42 @@ with open('style.css') as f:
 
         if st.button("Do the magic"):
             time.sleep(2)
-            st.success(f'Sentiment: {user_input}')
+            if user_input == 'sim':
+                st.success(f'Sentiment: {user_input}')
+            elif user_input == 'não':
+                st.error(f'Sentiment: {user_input}')
+            else:
+                st.warning(f'Sentiment: {user_input}')
 
 
-        st.markdown('For undertand more about our produt')
-        st.markdown('[**About mi-person**](http://172.24.246.242:8501/about-us)',False)
+            st.markdown('For undertand more about our produt')
+            st.markdown('[**about mi-person**](http://172.24.246.242:8501/about-us)',False)
 
 
-# SIDE_BAR
+### ABOUT THE PROJECT
+if selected == 'mi-project':
+
+    st.title('mi-project')
+
+
+    tab1, tab2, tab3 = st.tabs(['Positive', 'Neutral', 'Negative'])
+
+    with tab1:
+        st.subheader('Emotions')
+        with st.container():
+            st.write('admiration,amusement,approval,caring,curiosity,\
+                    desire,excitement,gratitude,joy,love,optimism,relief,realization')
+
+    with tab2:
+        st.subheader('Emotions')
+        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+    with tab3:
+
+        st.subheader('Emotions')
+        with st.container():
+            st.write('anger,annoyance,confusion,disappointment,disapproval,disgust,embarrassment,\
+        fear,grief,nervousness,pride,remorse,sadness')
 
 
 
@@ -73,32 +101,31 @@ with open('style.css') as f:
         st.write('----------')
 
         col1, col2, col3, col4 = st.columns(4)
+
         with col1:
-            st.title('Carlos Lima')
             st.image('https://avatars.githubusercontent.com/u/106851222?v=4')
+            col1.header('Carlos Lima')
+
             st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/carlos-campos-46b06434/)")
 
             st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/Carlos-Lima-Campos)")
 
         with col2:
-            st.title('Luiza Rosalba')
             st.image('https://avatars.githubusercontent.com/u/32474883?v=4')
+            col2.header('Luiza Rosalba')
 
             st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/luizarosalba/)")
 
             st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/luizarosalba)")
         with col3:
-            st.title('Tabatha Wiggers')
             st.image('https://avatars.githubusercontent.com/u/50644696?v=4')
+            col3.header('Tabatha Wiggers')
             st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/luizarosalba/)")
             st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/tatchiwiggers)")
 
         with col4:
-            st.title('Thais Carreira')
-            st.image('https://avatars.githubusercontent.com/u/69222394?v=4'#, caption="I'm a financial planning analyst. \
-                # I'm working now in a startup, but I've already worked at big brazilian companies.\
-                    # I'm willing to learn new tecnologies and wanna change my career."
-                    )
+            st.image('https://avatars.githubusercontent.com/u/69222394?v=4')
+            col4.header('Thaís Carreira')
             st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/thais-carreira/)")
 
             st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/thaisccarreira)")
