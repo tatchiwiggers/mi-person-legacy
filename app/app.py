@@ -3,6 +3,7 @@ from select import select
 import streamlit as st
 import webbrowser
 from streamlit_option_menu import option_menu
+import time
 
 
 # page configuration and sidebar setup
@@ -26,10 +27,10 @@ with st.sidebar:
     )
 
 
+
 #FIRST_PAGE HOME PAGE
 if selected == 'mi-person':
-
-    st.markdown("""# Mi Person
+        st.markdown("""# Mi Person
 ### say the right thing at the right time
 
 
@@ -44,20 +45,22 @@ Termometro que diagnostica o tipo de sentimento por trás da mensagem.
 Como saber o que a pessoa quer dizer?mi-person, seu novo melhor amigoAjuda na interpretação das mensagens…ajuda as pessoas a se comunicarem melhor por mensagens, evitando mal entendidos…
 
 """)
+    #   # create buttons to conect pages
+        # selected2 = option_menu(
+        # menu_title= None,
+        # options=['about-project','mi-analysis', 'mi-crew'],
+        # icons = ['megaphone', 'magic', 'people'],
+        # orientation='horizontal',
+        # styles={
+        # "container": {"padding": "0!important", "background-color": "#fafafa"},
+        # "icon": {"color": "rgba(255, 0, 0, 0.858)", "font-size": "15px"},
+        # "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+        # "nav-link-selected": {"background-color": "rgba(89, 179, 103, 0.571)"}}
 
-    # create buttons to conect pages
-    col1, col2 = st.columns(2)
-    with col1:
-        link = 'http://github.com'
-        if st.button('Mi-emotion'):
-            webbrowser.open_new(link)
+    # )
 
-        # st.markdown(link, unsafe_allow_html=True)
 
-    with col2:
-        link2 = 'http://globo.com.br'
-        if st.button('Mi-analysis'):
-            webbrowser.open_new(link2)
+
 
 ### ABOUT THE PROJECT
 if selected == 'about-project':
@@ -82,15 +85,17 @@ if selected == 'about-project':
 
 
 ### MODEL
+# tentar colocar o spinner para funcionar
 if selected == 'mi-analysis':
     st.header('Mi analysis')
     st.write('----------')
-
+    user_input = st.text_area('Text to analyze')
     with st.spinner(text="In progress..."):
-        user_input = st.text_area('Text to analyze')
 
+        # time.sleep(5)
         st.success(f'Sentiment: {user_input}')
-
+        st.error(f'Sentiment: {user_input}')
+        st.warning(f'Sentiment: {user_input}')
 
 ### THE CREW
 
@@ -152,6 +157,9 @@ with open('style.css') as f:
 
 # prediction = response.json()
 
-# pred = prediction['fare']
+# pred = prediction['emotion']
 
-# st.header(f'Sentiment: {pred}')
+
+# SE positivo -> st.sucess(f'Sentiment: {pred}')
+# SE neutro -> st.warning(f'Sentiment: {pred}')
+# SE negativo -> st.error(f'Sentiment: {pred}')
