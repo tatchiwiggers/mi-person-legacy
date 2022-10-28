@@ -3,6 +3,7 @@ from streamlit_option_menu import option_menu
 import streamlit as st
 import webbrowser
 import time
+import pandas as pd
 
 # PAGE_CONFIGURATION
 
@@ -112,6 +113,45 @@ As 27 categorias pertencentes a cada estado estão exemplificadas abaixo.
 if selected == 'mi-analysis':
 
     st.title('mi-analysis')
+
+    col1, col2 = st.columns(2)
+
+
+    with col1:
+
+        st.markdown('Análise através de input de texto:')
+        with st.spinner(text="In progress..."):
+                user_input = st.text_area('')
+
+        if st.button("Do the magic"):
+            time.sleep(2)
+            if user_input == 'sim':
+                st.success(f'Sentiment: {user_input}')
+            elif user_input == 'não':
+                st.error(f'Sentiment: {user_input}')
+            else:
+                st.warning(f'Sentiment: {user_input}')
+
+    with col2:
+
+        st.markdown("""Análise através de datasets em extensão csv:
+                    """)
+
+        uploaded_file = st.file_uploader("")
+
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+            st.write(df)
+
+
+            csv = df.to_csv()
+
+            st.download_button(
+                label="Download data as CSV",
+                data=csv,
+                file_name='mi-person_df.csv',
+                mime='text/csv',
+            )
 
 
 
