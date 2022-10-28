@@ -1,29 +1,29 @@
 /* common styling  */
-span.css-10trblm.e16nr0p30{
-  text-align: center;
-  ;
-
-}
-
-div.css-6qob1r.e1fqkh3o3{
-  background-color: rgba(242, 243, 243, 0.2),
-
-}
-
 .css-fg4pbf {
   background: #fffafa
 }
-
-/* text area */
-
-
-/* home_page general */
-
-#mi-person{
-border-bottom: #52BE80 solid 1px;
+span.css-10trblm.e16nr0p30{
+  text-align: center;
+  font-family: Gill Sans, sans-serif;
 }
 
+.sidebar{
+  background-color:#F72C25;
+  color: white;
+}
 
+#mi-person{
+border-bottom: #73AB84 solid 1px;
+}
+#mi-project{
+  border-bottom: #73AB84 solid 1px;
+  }
+#mi-analysis{
+    border-bottom: #73AB84 solid 1px;
+    }
+#mi-crew{
+  border-bottom: #73AB84 solid 1px;
+  }
 
 
 /* button home_page */
@@ -33,7 +33,7 @@ border-bottom: #52BE80 solid 1px;
   background-color:#C60C35;
   font-size: 20px;
   height: 60px;
-  widht: 100%;
+  width: 25%;
 
 }
 
@@ -43,7 +43,7 @@ st.Button > button:hover{
   border-color: #920000;;
   font-size: 20px;
   height: 60px;
-  widht: 100%;
+  width:25%;
 }
 
 .css-12ttj6m {
@@ -52,13 +52,26 @@ st.Button > button:hover{
 }
 
 .css-fg4pbf {
-  text-align: center
+  text-align: center;
 
 }
 
 .stMarkdown img {
   width: 30px;
   height: 30px;
+
+}
+/* PROJECT DISPLAY */
+
+button[data-baseweb="tab"] {
+  font-size: 20px;
+  font-family: Gill Sans, sans-serif;
+  background-color:#fffafa ;
+  color: black;
+  width: 100%;
+}
+button[data-baseweb="tab"]:hover{
+  color:#F72C25;
 
 }
 
@@ -72,18 +85,21 @@ div.css-1v0mbdj.etr89bj1 {
 div.css-1v0mbdj.etr89bj1 img {
   border-width: medium;
   border-radius: 80px;
-  border-color:#C60C35;
+  border-color:#ffffff;
   border-style: solid;
+  width: 170px;
+
 }
 
 .stMarkdown {
   font-size: 50px;
+  border-color:#ba5050;
 }
 
 /* header, footer and main menu*/
 
 header.css-18ni7ap.e8zbici2 {
-  background-image: linear-gradient(to left, rgba(89, 179, 103, 0.571), rgba(234, 255, 0, 0.465), rgba(255, 0, 0, 0.858));
+  background-image: linear-gradient(to left, #73AB84, #FFD400, #F72C25);
 }
 
 footer{
