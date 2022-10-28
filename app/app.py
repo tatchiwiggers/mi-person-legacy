@@ -92,7 +92,7 @@ if selected == 'mi-analysis':
     user_input = st.text_area('Text to analyze')
     with st.spinner(text="In progress..."):
 
-        # time.sleep(5)
+        time.sleep(5)
         st.success(f'Sentiment: {user_input}')
         st.error(f'Sentiment: {user_input}')
         st.warning(f'Sentiment: {user_input}')
