@@ -137,11 +137,25 @@ with open('style.css') as f:
             st.markdown("### **Import a dataset** ")
             st.write('importe um arquivo salvo com extensao csv com os textos em uma unica coluna e nada mais conforme modelo abaixo')
 
-            uploaded_file = st.file_uploader("Choose a file")
+            st.markdown("""Análise através de datasets em extensão csv:
+                    """)
+
+            uploaded_file = st.file_uploader("")
+
             if uploaded_file is not None:
                 df = pd.read_csv(uploaded_file)
                 st.write(df)
-                st.download_button(label="download", data=df)
+
+
+                csv = df.to_csv()
+
+                st.download_button(
+                    label="Download data as CSV",
+                    data=csv,
+                    file_name='mi-person_df.csv',
+                    mime='text/csv',
+                )
+
 
 
 
