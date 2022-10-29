@@ -25,8 +25,7 @@ border-bottom: #73AB84 solid 1px;
   border-bottom: #73AB84 solid 1px;
   }
 
-
-/* button home_page */
+/* button home_page and mi-analysis */
 
 .stButton > button {
   color:#FFFFFF;
@@ -73,6 +72,27 @@ button[data-baseweb="tab"] {
 button[data-baseweb="tab"]:hover{
   color:#F72C25;
 
+}
+
+/* area input csv */
+
+
+.css-u8hs99.exg6vvm14{
+  width: 344px;
+  flex-direction: column;
+}
+
+.css-6kekos.edgvbvh9 {
+  order: 2;
+}
+
+.css-nwtri.exg6vvm13{
+  order: 1;
+}
+
+.css-1fttcpj.exg6vvm11{
+  order: 3;
+  visibility: hidden;
 }
 
 /* crew display */
