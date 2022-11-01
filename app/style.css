@@ -7,13 +7,8 @@ span.css-10trblm.e16nr0p30{
   font-family: Gill Sans, sans-serif;
 }
 
-.sidebar{
-  background-color:#F72C25;
-  color: white;
-}
 .css-fg4pbf {
   text-align: center;
-
 }
 
 #mi-person{
@@ -51,11 +46,6 @@ st.Button > button:hover{
 
 }
 
-.css-12ttj6m {
-  border: 0px;
-  text-align: center
-}
-
 
 
 /* MODEL DISPLAY */
@@ -71,35 +61,41 @@ button[data-baseweb="tab"]:hover{
   color:#F72C25;
 
 }
-.stDownloadButton{
-  text-align: center;
-}
+
+
 /* crew display */
 
-div.css-1v0mbdj.etr89bj1 {
-  border-radius: 20%;
-  color: rgb(242, 243, 243);
-}
 
 div.css-1v0mbdj.etr89bj1 img {
   border-radius: 80px;
 }
 
-.stMarkdown {
-  font-size: 50px;
-
-}
-
 .stMarkdown img {
   width: 30px;
   height: 30px;
-
-
 }
-.stMarkdownContainer{
-  background-color: #C60C35;
+
+h2[id="tabatha-wiggers"]{
+  font-size: 30px;
 }
-/* header, footer and main menu*/
+
+h2[id="tha-s-carreira"]{
+  font-size: 30px;
+}
+
+h2[id="luiza-rosalba"]{
+  font-size: 30px;
+}
+
+h2[id="carlos-lima"]{
+  font-size: 30px;
+  word-spacing: 10px;
+}
+/* div[data-testid="stVerticalBlock"].css-f64nwk.e1tzin5v0{
+  flex-direction: row;
+} */
+
+ /* header, footer and main menu */
 
 header.css-18ni7ap.e8zbici2 {
   background-image: linear-gradient(to left, #73AB84, #FFD400, #F72C25);
