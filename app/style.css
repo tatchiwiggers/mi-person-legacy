@@ -1,6 +1,6 @@
 /* common styling css */
 .css-fg4pbf {
-  background: #fffafa
+  background: rgb(255, 250, 250)
 }
 span.css-10trblm.e16nr0p30{
   text-align: center;
@@ -10,6 +10,10 @@ span.css-10trblm.e16nr0p30{
 .sidebar{
   background-color:#F72C25;
   color: white;
+}
+.css-fg4pbf {
+  text-align: center;
+
 }
 
 #mi-person{
@@ -26,7 +30,7 @@ border-bottom: #73AB84 solid 1px;
   }
 
 
-/* button home_page */
+/* button home_page an mi-analysis */
 
 .stButton > button {
   color:#FFFFFF;
@@ -40,10 +44,11 @@ border-bottom: #73AB84 solid 1px;
 st.Button > button:hover{
   color: #FFFFFF;
   background-color: #920000;
-  border-color: #920000;;
+  border-color: #920000;
   font-size: 20px;
   height: 60px;
   width:25%;
+
 }
 
 .css-12ttj6m {
@@ -51,17 +56,9 @@ st.Button > button:hover{
   text-align: center
 }
 
-.css-fg4pbf {
-  text-align: center;
 
-}
 
-.stMarkdown img {
-  width: 30px;
-  height: 30px;
-
-}
-/* PROJECT DISPLAY */
+/* MODEL DISPLAY */
 
 button[data-baseweb="tab"] {
   font-size: 20px;
@@ -74,7 +71,9 @@ button[data-baseweb="tab"]:hover{
   color:#F72C25;
 
 }
-
+.stDownloadButton{
+  text-align: center;
+}
 /* crew display */
 
 div.css-1v0mbdj.etr89bj1 {
@@ -83,19 +82,23 @@ div.css-1v0mbdj.etr89bj1 {
 }
 
 div.css-1v0mbdj.etr89bj1 img {
-  border-width: medium;
   border-radius: 80px;
-  border-color:#ffffff;
-  border-style: solid;
-  width: 170px;
-
 }
 
 .stMarkdown {
   font-size: 50px;
-  border-color:#ba5050;
+
 }
 
+.stMarkdown img {
+  width: 30px;
+  height: 30px;
+
+
+}
+.stMarkdownContainer{
+  background-color: #C60C35;
+}
 /* header, footer and main menu*/
 
 header.css-18ni7ap.e8zbici2 {
