@@ -89,6 +89,7 @@ with open('style.css') as f:
     As 27 categorias pertencentes a cada estado estão exemplificadas abaixo.
 
                 """)
+        st.write("check our github repository [mi-person repository](https://github.com/tatchiwiggers/mi-person)")
 
         selected2 = option_menu(
                 menu_title= None,
