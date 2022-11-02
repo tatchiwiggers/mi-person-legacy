@@ -3,6 +3,8 @@ from streamlit_option_menu import option_menu
 import streamlit as st
 import time
 import pandas as pd
+import csv
+from PIL import Image
 
 # PAGE_CONFIGURATION
 
@@ -56,7 +58,7 @@ with open('style.css') as f:
                 st.warning(f'Sentiment: {user_input}')
 
 
-            st.markdown('For undertand more about our produt')
+            st.markdown('To know more about our produt:')
             st.markdown('[**about mi-person**](http://172.24.246.242:8501/about-us)',False)
 
 
@@ -87,26 +89,30 @@ with open('style.css') as f:
     As 27 categorias pertencentes a cada estado estão exemplificadas abaixo.
 
                 """)
+        st.write("check our github repository [mi-person repository](https://github.com/tatchiwiggers/mi-person)")
 
+        selected2 = option_menu(
+                menu_title= None,
+                options=['POSITIVE', 'NEUTRAL','NEGATIVE'],
+                icons = ['emoji-smile', 'emoji-neutral', 'emoji-frown'],
+                orientation= 'horizontal',
+                styles={
+                "container": {"padding": "0!important", "background-color": "#fafafa"},
+                "icon": {"color": "rgba(255, 0, 0, 0.858)", "font-size": "15px"},
+                "nav-link": {"font-size": "20px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+                "nav-link-selected": {"background-color": "rgba(89, 179, 103, 0.571)"}}
+    )
+        if selected2 == 'POSITIVE':
+            image = Image.open('tab_positive.jpeg')
+            st.image(image, width=730)
 
-        tab1, tab2, tab3 = st.tabs(['Positive', 'Neutral', 'Negative'])
+        if selected2 == 'NEGATIVE':
+            image = Image.open('tab_negative.jpeg')
+            st.image(image, width=730)
 
-        with tab1:
-            st.subheader('Emotions')
-            with st.container():
-                st.write('admiration,amusement,approval,caring,curiosity,\
-                        desire,excitement,gratitude,joy,love,optimism,relief,realization')
-
-        with tab2:
-            st.subheader('Emotions')
-            st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-
-        with tab3:
-
-            st.subheader('Emotions')
-            with st.container():
-                st.write('anger,annoyance,confusion,disappointment,disapproval,disgust,embarrassment,\
-            fear,grief,nervousness,pride,remorse,sadness')
+        if selected2 == 'NEUTRAL':
+            image = Image.open('tab_neutral.jpeg')
+            st.image(image, width=730)
 
 
 # PRODUCTS
@@ -121,8 +127,25 @@ with open('style.css') as f:
 # one single text analysis
         with analysis1:
             st.markdown(" ### Insert yout text")
-            with st.spinner(text="In progress..."):
-                user_input = st.text_area('')
+            st.write('Insert the text you wish to be analyse in the box below and click to view the magic.')
+            user_input = st.text_area('')
+
+            # params = dict(
+            # user_input=user_input)
+
+            # mi_person_api_url = ''
+            # response = requests.get(mi_person_api_url, params=params)
+
+            # prediction = response.json()
+
+            # pred = prediction['emotion']
+            # if st.button("Do the magic"):
+            #     if pred == 'positive':
+            #         st.success(f'Sentiment: {pred}')
+            #     elif pred == 'negative':
+            #         st.error(f'Sentiment: {pred}')
+            #     else:
+            #         st.warning(f'Sentiment: {pred}')
 
             if st.button("Do the magic"):
                 time.sleep(2)
@@ -135,22 +158,31 @@ with open('style.css') as f:
 # Dataset text analysis
         with analysis2:
             st.markdown("### **Import a dataset** ")
-            st.write('importe um arquivo salvo com extensao csv com os textos em uma unica coluna e nada mais conforme modelo abaixo')
+            st.write('If you want to analyse more than one single text at once, import a csv extansion file, displaying all texts in column A, one for wich line. Below the model csv file to download.')
 
-            st.markdown("""Análise através de datasets em extensão csv:
-                    """)
-
+            with open("csv_model.csv", "r") as file:
+                st.download_button(
+                    label="Download the CSV model",
+                    data=file,
+                    file_name="mi-model.csv",
+                    mime="text/csv"
+                )
+            st.write('')
+            st.write('')
+            st.write("Upload your csv file and wait to the 'download the predictions' button appears to view the magic.")
             uploaded_file = st.file_uploader("")
-
             if uploaded_file is not None:
                 df = pd.read_csv(uploaded_file)
                 st.write(df)
 
+                @st.cache
+                def convert_df(data):
+                    return data.to_csv().encode('utf-8')
 
-                csv = df.to_csv()
+                csv = convert_df(df)
 
                 st.download_button(
-                    label="Download data as CSV",
+                    label="Download the predictions",
                     data=csv,
                     file_name='mi-person_df.csv',
                     mime='text/csv',
@@ -168,85 +200,54 @@ with open('style.css') as f:
         st.write('')
 
 
+    ## IMAGE COLUMN
         col1, col2, col3, col4 = st.columns(4)
 
         with col1:
             st.image('https://avatars.githubusercontent.com/u/106851222?v=4')
-            col1.header('Carlos Lima')
-
-            st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/carlos-campos-46b06434/)")
-
-            st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/Carlos-Lima-Campos)")
-
         with col2:
             st.image('https://avatars.githubusercontent.com/u/32474883?v=4')
-            col2.header('Luiza Rosalba')
 
-            st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/luizarosalba/)")
-
-            st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/luizarosalba)")
         with col3:
             st.image('https://avatars.githubusercontent.com/u/50644696?v=4')
-            col3.header('Tabatha Wiggers')
-            st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/tabatha-wiggers-b17372190/)")
-            st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/tatchiwiggers)")
 
         with col4:
             st.image('https://avatars.githubusercontent.com/u/69222394?v=4')
+
+    ## NAME COLUMN
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            col1.header('Carlos Lima')
+
+        with col2:
+            col2.header('Luiza Rosalba')
+
+        with col3:
+            col3.header('Tabatha Wiggers')
+
+        with col4:
             col4.header('Thaís Carreira')
-            st.markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/thais-carreira/)")
-
-            st.markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/thaisccarreira)")
 
 
+    ### ICON COLUMN
 
+        def make_grid(cols,rows):
+            grid = [0]*cols
+            for i in range(cols):
+                with st.container():
+                    grid[i] = st.columns(rows)
+            return grid
+        mygrid = make_grid(2,24)
 
+        mygrid[0][2].markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/carlos-campos-46b06434/)")
+        mygrid[0][3].markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/Carlos-Lima-Campos)")
 
+        mygrid[0][8].markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/luizarosalba/)")
+        mygrid[0][9].markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/luizarosalba)")
 
+        mygrid[0][14].markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/tabatha-wiggers-b17372190/)")
+        mygrid[0][15].markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/tatchiwiggers)")
 
-
-
-
-
-
-
-
-
-###### linkar streamilit api
-# user_input = st.text_input('Text to analyze', value='')
-
-# params = dict(
-#     user_input=user_input)
-
-# mi_person_api_url = ''
-# response = requests.get(mi_person_api_url, params=params)
-
-# prediction = response.json()
-
-# pred = prediction['emotion']
-
-
-# SE positivo -> st.sucess(f'Sentiment: {pred}')
-# SE neutro -> st.warning(f'Sentiment: {pred}')
-
-
-
-
-
-
-
-
-
-
-# col1, col2 = st.columns(2)
-# with col1:
-#     if st.button('Mi-emotion'):
-#         link = 'http://172.24.246.242:8501/mi-emotions'
-#         webbrowser.open_new(link)
-
-#     # st.markdown(link, unsafe_allow_html=True)
-
-# with col2:
-#     link2 = 'http://172.24.246.242:8501/mi-analys'
-#     if st.button('Mi-analysis'):
-#         webbrowser.open_new(link2)
+        mygrid[0][20].markdown("[![Foo](https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-48.png)](https://www.linkedin.com/in/thais-carreira/)")
+        mygrid[0][21].markdown("[![Foo](https://img.icons8.com/material-outlined/48/000000/github.png)](https://github.com/thaisccarreira)")
