@@ -65,7 +65,7 @@ if selected == 'mi-project':
 
     st.title('mi-project')
 
-    st.markdown('esboço 1 do about rs')
+    st.markdown('esboço 1')
 
     st.markdown(""" O projeto mi-person surgiu com o objetivo de ajudar às empresas no relacionamento com
                 seus clientes, frente aos reviews, reclamações ou até mesmo chat-bots.
@@ -78,7 +78,7 @@ if selected == 'mi-project':
 
     st.markdown('As categorias agrupadas estão abaixo.')
 
-    st.markdown('esboço 2 do about rs')
+    st.markdown('esboço 2')
 
     st.markdown("""O mi-person é uma aplicação de NLP que surgiu com o objetivo de auxiliar os usuários a identificar os sentimentos de seus clientes, seguidores entre outros a respeito de seus posts, reviews de produtos ou serviços de forma mais eficaz.
 Nosso modelo tem como principal característica ajudar na rápida identificação da interação do 'cliente' para que o usuário possa concentrar esforços em suas estratégias de forma eficiente e planejada.
@@ -86,6 +86,15 @@ Os sentimentos são divididos em 27 categorias que agrupamos em 3 tipos de estad
 As 27 categorias pertencentes a cada estado estão exemplificadas abaixo.
 
                """)
+
+    st.markdown('esboço 3')
+
+    st.markdown("""O mi-person nasceu com o objetivo de auxiliar as empresas identificar de forma mais otimizada o sentimento expresso por seus clientes através de seus reviews, interações via rede sociais ou até mesmo contato com os chat-bots.
+O principal intuito da nossa aplicação é que não seja necessário a utilização máxima de recursos para as análises de interação dos clientes, mas que se possa focar apenas nas que sejam importantes para a manutenção/fidelização, tratamento de danos ou até mesmo suporte técnico.
+Nosso modelo traduz de forma simplificada o sentimento apresentado em três principais categorias, sendo elas Negativo, Neutro e Positivo.
+As três categorias englobam outras 27 categorias de sentimentos que poderão ser exploradas também pelos usuários da plataforma.
+A segmentação em três principais categorias irá assessorar na seleção da melhor estratégia para cada caso, otimizando o emprego dos recursos.
+""")
 
 
     tab1, tab2, tab3 = st.tabs(['Positive', 'Neutral', 'Negative'])
