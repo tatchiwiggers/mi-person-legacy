@@ -30,3 +30,4 @@ termcolor
 
 # User_Interface
 streamlit
+streamlit-aggrid

@@ -5,6 +5,9 @@ import time
 import pandas as pd
 import csv
 from PIL import Image
+import numpy as np
+from st_aggrid import AgGrid
+
 
 # PAGE_CONFIGURATION
 
@@ -26,7 +29,7 @@ with st.sidebar:
         "nav-link-selected": {"background-color": "rgba(89, 179, 103, 0.571)"}}
     )
 
-# HOME_PAGE (app)
+# HOME_PAGE
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -59,8 +62,8 @@ with open('style.css') as f:
 
 
             st.markdown('To know more about our produt:')
-            st.markdown('[**about mi-person**](http://172.24.246.242:8501/about-us)',False)
-
+            # st.markdown('[**about mi-person**](http://192.168.0.8:8501/about-us)',False)
+            st.write("check our github repository [mi-person repository](https://github.com/tatchiwiggers/mi-person)")
 
 ### ABOUT THE PROJECT
 
@@ -173,11 +176,12 @@ with open('style.css') as f:
             uploaded_file = st.file_uploader("")
             if uploaded_file is not None:
                 df = pd.read_csv(uploaded_file)
-                st.write(df)
+                AgGrid(df)
 
                 @st.cache
                 def convert_df(data):
                     return data.to_csv().encode('utf-8')
+
 
                 csv = convert_df(df)
 
