@@ -24,19 +24,15 @@ def sentiment_scores(sentence):
 	print("\nSentence overall rated as", end = " ",)
 
 	# decide sentiment as positive, negative and neutral
-	sentence = input("Enter a sentence to be analyzed: ")
+	# sentence = input("Enter a sentence to be analyzed: ")
 
 	# sentiment_scores(sentence)
 	if sentiment_dict['compound'] >= 0.05 :
-		print("Positive, say something nice back :)")
+		return "Positive, say something nice back :)"
 
 	elif sentiment_dict['compound'] <= - 0.05 :
-		print("Negative, try to chill a bit before answering...")
+		return "Negative, try to chill a bit before answering..."
 
 	else :
-		print("Neutral, so no problem here ;)")
-
-
-
-# if __name__ == "__main__" :
+		return "Neutral, so no problem here ;)"
 
