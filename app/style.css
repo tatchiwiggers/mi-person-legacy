@@ -22,7 +22,19 @@ border-bottom: #73AB84 solid 1px;
     }
 #mi-crew{
   border-bottom: #73AB84 solid 1px;
-  }
+}
+
+.css-j7qwjs {
+  font-size: 20px;
+
+}
+
+.css-y3drt2:active, .css-y3drt2:visited {
+  text-decoration: none;
+  color: rgb(19, 17, 17);
+  background-color: #73AB84;
+  gap: 1.2rem;
+}
 
 
 /* button home_page an mi-analysis */

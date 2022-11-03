@@ -62,8 +62,8 @@ with open('style.css') as f:
 
 
             st.markdown('To know more about our produt:')
-            st.markdown('[**about mi-person**](http://172.24.246.242:8501/about-us)',False)
-            # st.write("check our github repository [mi-person repository](https://github.com/tatchiwiggers/mi-person)")
+            # st.markdown('[**about mi-person**](http://192.168.0.8:8501/about-us)',False)
+            st.write("check our github repository [mi-person repository](https://github.com/tatchiwiggers/mi-person)")
 
 ### ABOUT THE PROJECT
 
