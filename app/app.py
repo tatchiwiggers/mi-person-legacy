@@ -19,7 +19,7 @@ def intro():
     """
     )
 
-def mapping_demo():
+def mapping_emotions():
     import streamlit as st
     import pandas as pd
     import pydeck as pdk
@@ -29,9 +29,7 @@ def mapping_demo():
     st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
     st.write(
         """
-        This demo shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
-to display geospatial data.
+        This chart displays the emotions extracted from the analyzed data:
 """
     )
 
@@ -45,7 +43,7 @@ to display geospatial data.
 
     try:
         ALL_LAYERS = {
-            "Bike Rentals": pdk.Layer(
+            "Anger": pdk.Layer(
                 "HexagonLayer",
                 data=from_data_file("bike_rental_stats.json"),
                 get_position=["lon", "lat"],
@@ -54,7 +52,7 @@ to display geospatial data.
                 elevation_range=[0, 1000],
                 extruded=True,
             ),
-            "Bart Stop Exits": pdk.Layer(
+            "Fear": pdk.Layer(
                 "ScatterplotLayer",
                 data=from_data_file("bart_stop_stats.json"),
                 get_position=["lon", "lat"],
@@ -62,7 +60,7 @@ to display geospatial data.
                 get_radius="[exits]",
                 radius_scale=0.05,
             ),
-            "Bart Stop Names": pdk.Layer(
+            "Joy": pdk.Layer(
                 "TextLayer",
                 data=from_data_file("bart_stop_stats.json"),
                 get_position=["lon", "lat"],
@@ -71,7 +69,33 @@ to display geospatial data.
                 get_size=15,
                 get_alignment_baseline="'bottom'",
             ),
-            "Outbound Flow": pdk.Layer(
+            "Love": pdk.Layer(
+                "ArcLayer",
+                data=from_data_file("bart_path_stats.json"),
+                get_source_position=["lon", "lat"],
+                get_target_position=["lon2", "lat2"],
+                get_source_color=[200, 30, 0, 160],
+                get_target_color=[200, 30, 0, 160],
+                auto_highlight=True,
+                width_scale=0.0001,
+                get_width="outbound",
+                width_min_pixels=3,
+                width_max_pixels=30,
+            ),
+            "Sadness": pdk.Layer(
+                "ArcLayer",
+                data=from_data_file("bart_path_stats.json"),
+                get_source_position=["lon", "lat"],
+                get_target_position=["lon2", "lat2"],
+                get_source_color=[200, 30, 0, 160],
+                get_target_color=[200, 30, 0, 160],
+                auto_highlight=True,
+                width_scale=0.0001,
+                get_width="outbound",
+                width_min_pixels=3,
+                width_max_pixels=30,
+            ),
+            "Surprise": pdk.Layer(
                 "ArcLayer",
                 data=from_data_file("bart_path_stats.json"),
                 get_source_position=["lon", "lat"],
@@ -144,7 +168,7 @@ def plotting_sentiment():
 page_names_to_funcs = {
     "—": intro,
     "Plotting a sentiment": plotting_sentiment,
-    "Mapping Demo": mapping_demo,
+    "Mapping text emotions": mapping_emotions,
     # "DataFrame Demo": data_frame_demo
 }
 
