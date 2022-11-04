@@ -70,9 +70,8 @@ with open('style.css') as f:
         image = Image.open('tab_neutral.jpeg')
         st.image(image, width=730)
 
-    # st.footer("""
-    #          Check out our github repository - 
-    #          [mi-person repository](https://github.com/tatchiwiggers/mi-person)
-    #          """
-    #          )
-    
+    st.footer("""
+             Check out our github repository - 
+             [mi-person repository](https://github.com/tatchiwiggers/mi-person)
+             """
+             )
