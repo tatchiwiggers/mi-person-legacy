@@ -29,11 +29,10 @@ with open('style.css') as f:
         )
 
     def mapping_emotions():
-        import streamlit as st
-        import pandas as pd
-        import pydeck as pdk
+        from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+        import matplotlib.pyplot as plt
 
-        from urllib.error import URLError
+
 
         st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
         st.write(
@@ -42,111 +41,19 @@ with open('style.css') as f:
     """
         )
 
-        @st.cache
-        def from_data_file(filename):
-            url = (
-                "http://raw.githubusercontent.com/streamlit/"
-                "example-data/master/hello/v1/%s" % filename
-            )
-            return pd.read_json(url)
+        stopwords = STOPWORDS
+        text = 'Fun, fun, awesome, awesome, tubular, astounding, superb, great, amazing, amazing, amazing, amazing'
 
-        try:
-            ALL_LAYERS = {
-                "Anger": pdk.Layer(
-                    "HexagonLayer",
-                    data=from_data_file("bike_rental_stats.json"),
-                    get_position=["lon", "lat"],
-                    radius=200,
-                    elevation_scale=4,
-                    elevation_range=[0, 1000],
-                    extruded=True,
-                ),
-                "Fear": pdk.Layer(
-                    "ScatterplotLayer",
-                    data=from_data_file("bart_stop_stats.json"),
-                    get_position=["lon", "lat"],
-                    get_color=[200, 30, 0, 160],
-                    get_radius="[exits]",
-                    radius_scale=0.05,
-                ),
-                "Joy": pdk.Layer(
-                    "TextLayer",
-                    data=from_data_file("bart_stop_stats.json"),
-                    get_position=["lon", "lat"],
-                    get_text="name",
-                    get_color=[0, 0, 0, 200],
-                    get_size=15,
-                    get_alignment_baseline="'bottom'",
-                ),
-                "Love": pdk.Layer(
-                    "ArcLayer",
-                    data=from_data_file("bart_path_stats.json"),
-                    get_source_position=["lon", "lat"],
-                    get_target_position=["lon2", "lat2"],
-                    get_source_color=[200, 30, 0, 160],
-                    get_target_color=[200, 30, 0, 160],
-                    auto_highlight=True,
-                    width_scale=0.0001,
-                    get_width="outbound",
-                    width_min_pixels=3,
-                    width_max_pixels=30,
-                ),
-                "Sadness": pdk.Layer(
-                    "ArcLayer",
-                    data=from_data_file("bart_path_stats.json"),
-                    get_source_position=["lon", "lat"],
-                    get_target_position=["lon2", "lat2"],
-                    get_source_color=[200, 30, 0, 160],
-                    get_target_color=[200, 30, 0, 160],
-                    auto_highlight=True,
-                    width_scale=0.0001,
-                    get_width="outbound",
-                    width_min_pixels=3,
-                    width_max_pixels=30,
-                ),
-                "Surprise": pdk.Layer(
-                    "ArcLayer",
-                    data=from_data_file("bart_path_stats.json"),
-                    get_source_position=["lon", "lat"],
-                    get_target_position=["lon2", "lat2"],
-                    get_source_color=[200, 30, 0, 160],
-                    get_target_color=[200, 30, 0, 160],
-                    auto_highlight=True,
-                    width_scale=0.0001,
-                    get_width="outbound",
-                    width_min_pixels=3,
-                    width_max_pixels=30,
-                ),
-            }
-            st.sidebar.markdown("### Map Layers")
-            selected_layers = [
-                layer
-                for layer_name, layer in ALL_LAYERS.items()
-                if st.sidebar.checkbox(layer_name, True)
-            ]
-            if selected_layers:
-                st.pydeck_chart(
-                    pdk.Deck(
-                        map_style="mapbox://styles/mapbox/light-v9",
-                        initial_view_state={
-                            "latitude": 37.76,
-                            "longitude": -122.4,
-                            "zoom": 11,
-                            "pitch": 50,
-                        },
-                        layers=selected_layers,
-                    )
-                )
-            else:
-                st.error("Please choose at least one layer above.")
-        except URLError as e:
-            st.error(
-                """
-                **This demo requires internet access.**
-                Connection error: %s
-            """
-                % e.reason
-            )
+
+        # Create and generate a word cloud image:
+        wordcloud = WordCloud(stopwords=stopwords, background_color= "white", width=440, height=280, colormap='Set3').generate(text)
+
+        # Display the generated image:
+
+        fig, ax = plt.subplots(figsize = (12, 8))
+        ax.imshow(wordcloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(fig)
 
     def plotting_sentiment():
         import streamlit as st
@@ -178,7 +85,7 @@ with open('style.css') as f:
     page_names_to_funcs = {
         "—": intro,
         "Plotting the sentiments of your text": plotting_sentiment,
-        "Mapping text emotions": mapping_emotions,
+        "Mapping the words": mapping_emotions,
         # "DataFrame Demo": data_frame_demo
     }
 
