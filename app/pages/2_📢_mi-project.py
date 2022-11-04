@@ -13,28 +13,39 @@ with open('style.css') as f:
 
     st.title('mi-project')
 
-    st.markdown('esboço 1 do about rs')
+    # st.markdown('esboço 1 do about rs')
 
-    st.markdown(""" O projeto mi-person surgiu com o objetivo de ajudar às empresas no relacionamento com
-                seus clientes, frente aos reviews, reclamações ou até mesmo chat-bots.
+    # st.markdown(""" O projeto mi-person surgiu com o objetivo de ajudar às empresas no relacionamento com
+    #             seus clientes, frente aos reviews, reclamações ou até mesmo chat-bots.
+    #             """)
+    # st.markdown(""" Atualmente com a difusão da tecnologia ... """)
+
+    # st.markdown("""Nosso modelo categoriza os textos em diferentes sentimentos que são agrupados
+    #             em três diferentes categorias, a fim de auxiliar no relacionamento com os clientes,
+    #             marketing pós-venda, assistência etc etc amanhã escrevo melhor""")
+
+    # st.markdown('As categorias agrupadas estão abaixo.')
+
+    # st.markdown('esboço 2 do about rs')
+
+    st.markdown("""
+                It's hard to communicate.
+                
+                How do you know what the other person is means to say? Do you fully understand
+                what they mean? Can you get you message accross based on somone's response?
+                
+                Mi-person was created with the intent of helping people to identify the
+                feelings behind any text, where understanding the real meaning can be troublesome, 
+                dus to the lack of context of voice intonation. Mi-person can help you understand 
+                sentences from casual text messages , tweets, emails or a simple interaction with chatbots. 
+                
+                As an open source web application, mi-person, can also be used to translate datasets making
+                it possible to classify large-scale texts in one go. 
+                
+                Based on the words and context of each text, mi-person translates in a simplified way the
+                sentiments presented in text format in three main categories: Negative, Neutral and Positive.
+                These three categories are composed, at the moment, of 27 different emotions, which can be analyzed as below:
                 """)
-    st.markdown(""" Atualmente com a difusão da tecnologia ... """)
-
-    st.markdown("""Nosso modelo categoriza os textos em diferentes sentimentos que são agrupados
-                em três diferentes categorias, a fim de auxiliar no relacionamento com os clientes,
-                marketing pós-venda, assistência etc etc amanhã escrevo melhor""")
-
-    st.markdown('As categorias agrupadas estão abaixo.')
-
-    st.markdown('esboço 2 do about rs')
-
-    st.markdown("""O mi-person é uma aplicação de NLP que surgiu com o objetivo de auxiliar os usuários a identificar os sentimentos de seus clientes, seguidores entre outros a respeito de seus posts, reviews de produtos ou serviços de forma mais eficaz.
-    Nosso modelo tem como principal característica ajudar na rápida identificação da interação do 'cliente' para que o usuário possa concentrar esforços em suas estratégias de forma eficiente e planejada.
-    Os sentimentos são divididos em 27 categorias que agrupamos em 3 tipos de estados para facilitar na abordagem. Os estados sendo: Neutro, Negativo e Positivo.
-    As 27 categorias pertencentes a cada estado estão exemplificadas abaixo.
-
-            """)
-    st.write("check our github repository [mi-person repository](https://github.com/tatchiwiggers/mi-person)")
 
     selected2 = option_menu(
             menu_title= None,
@@ -58,3 +69,9 @@ with open('style.css') as f:
     if selected2 == 'NEUTRAL':
         image = Image.open('tab_neutral.jpeg')
         st.image(image, width=730)
+
+    st.markdown("""
+             Check out our github repository - 
+             [mi-person repository](https://github.com/tatchiwiggers/mi-person)
+             """
+             )

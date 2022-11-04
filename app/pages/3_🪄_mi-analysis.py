@@ -102,18 +102,20 @@ with open('style.css') as f:
     # Dataset text analysis
     with analysis2:
         st.markdown("### **Import a dataset** ")
-        st.write('If you want to analyse more than one single text at once, import a csv extansion file, displaying all texts in column A, one for wich line. Below the model csv file to download.')
+        st.write('''If you want to analyze more than one single text at once, 
+                 import a csv extansion file, displaying all texts in column A,
+                 one for wich line. Below the model csv file to download.''')
 
         with open("csv_model.csv", "r") as file:
             st.download_button(
-                label="Download the CSV model",
+                label="Download CSV File",
                 data=file,
                 file_name="mi-model.csv",
                 mime="text/csv"
             )
             st.write('')
             st.write('')
-            st.write("Upload your csv file and wait to the 'download the predictions' button appears to view the magic.")
+            st.write("Upload your csv file with your input text then download the predictions to 'view the magic'.")
             uploaded_file = st.file_uploader("")
             if uploaded_file is not None:
                 df = pd.read_csv(uploaded_file)
