@@ -83,13 +83,13 @@ with open('style.css') as f:
             
         
         if res.split(',')[0] == 'Positive':
-            st.subheader('Sucesso')
+            # st.subheader('Sucesso')
             st.success(f'sentiment: {res}')
         elif res.split(',')[0] == 'Neutral':
-            st.subheader('Sucesso')
+            # st.subheader('Sucesso')
             st.warning(f'sentiment: {res}')
         elif res.split(',')[0] == 'Negative':
-            st.subheader('Sucesso')
+            # st.subheader('Sucesso')
             st.error(f'sentiment: {res}')
         else:
             st.subheader('Analysis failed.')
