@@ -147,12 +147,14 @@ def plotting_sentiment():
     st.markdown(f'# {list(page_names_to_funcs.keys())[1]}')
     st.write(
         """
-        This plot illustrates a combination of plotting and animation with
-        Streamlit. We're generating values based on the evaluation of your text. Enjoy!
-"""
+        This plot illustrates the combination of sentiments found in the text. 
+        Though the analysis is based on 3 classes only: positive, negative and neutral -
+        sentiments in a sentence are not limited to that ;)
+        
+        Enjoy!
+        """
     )
 
-    from datasets import load_dataset
     import pandas as pd
     import altair as alt
 
@@ -160,14 +162,14 @@ def plotting_sentiment():
 
     sentiments = train['description']
     sentiments = pd.DataFrame(sentiments)
-    s = sentiments.rename(columns={'index': 'description', 'description': 'amount'})
+    s = sentiments.rename(columns={'index': 'description', 'description': 'rate'})
 
     st.area_chart(s)
     
     
 page_names_to_funcs = {
     "—": intro,
-    "Plotting a sentiment": plotting_sentiment,
+    "Plotting the sentiments of your text": plotting_sentiment,
     "Mapping text emotions": mapping_emotions,
     # "DataFrame Demo": data_frame_demo
 }
