@@ -70,7 +70,7 @@ with open('style.css') as f:
         image = Image.open('tab_neutral.jpeg')
         st.image(image, width=730)
 
-    st.footer("""
+    st.markdown("""
              Check out our github repository - 
              [mi-person repository](https://github.com/tatchiwiggers/mi-person)
              """
