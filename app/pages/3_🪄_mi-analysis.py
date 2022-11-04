@@ -50,7 +50,7 @@ with open('style.css') as f:
         
 
         if st.button("Do the magic"):
-            # res = requests.post(url ='http://127.0.0.1:8504/mi-person', data=json.dumps(user_input))
+            # res = requests.post(url ='http://127.0.0.1:8504/mi-person', data=json.dumps(user_input)) for later
             
             sentiment_dict = sentiment_scores(user_input)
             
