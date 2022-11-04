@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from model import sentiment_scores
 from fastapi.middleware.cors import CORSMiddleware
+from schema import Sentiment
 
 
 app = FastAPI()
@@ -21,4 +22,3 @@ def index():
 def analyze(sentence: str):
     result = sentiment_scores(sentence)
     return result
-

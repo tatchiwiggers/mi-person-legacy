@@ -31,20 +31,21 @@ with open('style.css') as f:
     st.markdown("""
                 It's hard to communicate.
                 
-                How do you know what the other person is means to say? Do you fully understand
-                what they mean? Can you get you message accross based on somone's response?
+                How do you know what the other person means to say? Do you fully understand
+                what they mean? Can you get your message accross based on somone's response?
                 
                 Mi-person was created with the intent of helping people to identify the
                 feelings behind any text, where understanding the real meaning can be troublesome, 
-                dus to the lack of context of voice intonation. Mi-person can help you understand 
-                sentences from casual text messages , tweets, emails or a simple interaction with chatbots. 
+                due to the lack of context and voice intonation. Mi-person can help you understand 
+                sentences from simple casual text messages, to tweets, formal emails, even a simple
+                interaction with chatbots. 
                 
                 As an open source web application, mi-person, can also be used to translate datasets making
-                it possible to classify large-scale texts in one go. 
+                it possible to classify large-scale texts in one-go. 
                 
                 Based on the words and context of each text, mi-person translates in a simplified way the
                 sentiments presented in text format in three main categories: Negative, Neutral and Positive.
-                These three categories are composed, at the moment, of 27 different emotions, which can be analyzed as below:
+                These three categories are composed in our application, at the moment, of 27 different emotions, which can be analyzed as below:
                 """)
 
     selected2 = option_menu(
