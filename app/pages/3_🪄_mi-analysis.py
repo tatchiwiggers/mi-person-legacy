@@ -24,31 +24,79 @@ with open('style.css') as f:
         st.write('Insert the text you wish to be analyse in the box below and click to view the magic.')
         user_input = st.text_area('')
 
-        # params = dict(
-        # user_input=user_input)
+        
+        from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+        def sentiment_scores(sentence):
+        # Create a SentimentIntensityAnalyzer object.
+            sid_obj = SentimentIntensityAnalyzer()
 
-        # mi_person_api_url = ''
-        # response = requests.get(mi_person_api_url, params=params)
+            # polarity_scores method of SentimentIntensityAnalyzer
+            # object gives a sentiment dictionary.
+            # which contains pos, neg, neu, and compound scores.
+            sentiment_dict = sid_obj.polarity_scores(sentence)
+            
+            print("Overall sentiment: ", sentiment_dict)
+            print("sentence was rated as ", sentiment_dict['neg']*100, "% Negative")
+            print("sentence was rated as ", sentiment_dict['neu']*100, "% Neutral")
+            print("sentence was rated as ", sentiment_dict['pos']*100, "% Positive")
 
-        # prediction = response.json()
+            print("\nSentence overall rated as", end = " ",)
 
-        # pred = prediction['emotion']
-        # if st.button("Do the magic"):
-        #     if pred == 'positive':
-        #         st.success(f'Sentiment: {pred}')
-        #     elif pred == 'negative':
-        #         st.error(f'Sentiment: {pred}')
-        #     else:
-        #         st.warning(f'Sentiment: {pred}')
+            # decide sentiment as positive, negative and neutral
+            # sentence = input("Enter a sentence to be analyzed: ")
+
+            # sentiment_scores(sentence)
+            return sentiment_dict
+        
 
         if st.button("Do the magic"):
+            # res = requests.post(url ='http://127.0.0.1:8504/mi-person', data=json.dumps(user_input))
+            
+            sentiment_dict = sentiment_scores(user_input)
+            
+            if sentiment_dict['compound'] >= 0.05 :
+                res = "Positive, say something nice back :)"
 
-            if user_input == 'sim':
-                st.success(f'Sentiment: {user_input}')
-            elif user_input == 'não':
-                st.error(f'Sentiment: {user_input}')
+            elif sentiment_dict['compound'] <= - 0.05 :
+                res = "Negative, try to chill a bit before answering..."
+
+            else :
+                res = "Neutral, so no problem here ;)"
+                
+            
+            if res.split(',')[0] == 'Positive':
+                # st.subheader('Sucesso')
+                st.success(f'sentiment: {res}')
+            elif res.split(',')[0] == 'Neutral':
+                # st.subheader('Sucesso')
+                st.warning(f'sentiment: {res}')
+            elif res.split(',')[0] == 'Negative':
+                # st.subheader('Sucesso')
+                st.error(f'sentiment: {res}')
             else:
-                st.warning(f'Sentiment: {user_input}')
+                st.subheader('Analysis failed.')
+                st.error('The model could not evaluate any emotion in the text')
+
+            st.subheader('Individual percentages per emotion')
+            
+            s = pd.DataFrame([sentiment_dict])
+            s = s[['neg', 'pos', 'neu']]
+            s = s.rename(columns={'neg': 'negative', 'pos': 'positive', 'neu': 'neutral'}).reset_index(drop=True)
+            s = s.style.format("{:.2%}")
+
+            # CSS to inject contained in a string
+            hide_table_row_index = """
+                        <style>
+                        thead tr th:first-child {display:none}
+                        tbody th {display:none}
+                        </style>
+                        """
+
+            # Inject CSS with Markdown
+            st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
+            # Display a static table
+            st.table(s)
 
 
     # Dataset text analysis
