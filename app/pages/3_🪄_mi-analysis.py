@@ -77,7 +77,7 @@ with open('style.css') as f:
                 st.subheader('Analysis failed.')
                 st.error('The model could not evaluate any emotion in the text')
 
-            st.subheader('Individual percentages per emotion')
+            st.subheader('Individual percentages per classification')
             
             s = pd.DataFrame([sentiment_dict])
             s = s[['neg', 'pos', 'neu']]
@@ -102,6 +102,7 @@ with open('style.css') as f:
     # Dataset text analysis
     with analysis2:
         st.markdown("### **Import a dataset** ")
+        
         st.write('''If you want to analyze more than one single text at once, 
                  import a csv extansion file, displaying all texts in column A,
                  one for wich line. Below the model csv file to download.''')
