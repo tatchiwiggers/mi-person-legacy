@@ -24,7 +24,7 @@ with open('style.css') as f:
         st.write('Insert the text you wish to be analyse in the box below and click to view the magic.')
         user_input = st.text_area('')
 
-        
+
         from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
         def sentiment_scores(sentence):
         # Create a SentimentIntensityAnalyzer object.
@@ -34,7 +34,7 @@ with open('style.css') as f:
             # object gives a sentiment dictionary.
             # which contains pos, neg, neu, and compound scores.
             sentiment_dict = sid_obj.polarity_scores(sentence)
-            
+
             print("Overall sentiment: ", sentiment_dict)
             print("sentence was rated as ", sentiment_dict['neg']*100, "% Negative")
             print("sentence was rated as ", sentiment_dict['neu']*100, "% Neutral")
@@ -47,13 +47,13 @@ with open('style.css') as f:
 
             # sentiment_scores(sentence)
             return sentiment_dict
-        
+
 
         if st.button("Do the magic"):
             # res = requests.post(url ='http://127.0.0.1:8504/mi-person', data=json.dumps(user_input)) for later
-            
+
             sentiment_dict = sentiment_scores(user_input)
-            
+
             if sentiment_dict['compound'] >= 0.05 :
                 res = "Positive, say something nice back :)"
 
@@ -62,8 +62,8 @@ with open('style.css') as f:
 
             else :
                 res = "Neutral, so no problem here ;)"
-                
-            
+
+
             if res.split(',')[0] == 'Positive':
                 # st.subheader('Sucesso')
                 st.success(f'sentiment: {res}')
@@ -78,7 +78,7 @@ with open('style.css') as f:
                 st.error('The model could not evaluate any emotion in the text')
 
             st.subheader('Individual percentages per classification')
-            
+
             s = pd.DataFrame([sentiment_dict])
             s = s[['neg', 'pos', 'neu']]
             s = s.rename(columns={'neg': 'negative', 'pos': 'positive', 'neu': 'neutral'}).reset_index(drop=True)
@@ -102,8 +102,8 @@ with open('style.css') as f:
     # Dataset text analysis
     with analysis2:
         st.markdown("### **Import a dataset** ")
-        
-        st.write('''If you want to analyze more than one single text at once, 
+
+        st.write('''If you want to analyze more than one single text at once,
                  import a csv extansion file, displaying all texts in column A,
                  one for wich line. Below the model csv file to download.''')
 
