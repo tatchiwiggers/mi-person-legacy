@@ -8,7 +8,7 @@ st.set_page_config(
     layout="centered", # wide
     initial_sidebar_state="auto") # auto - prefixed bar
 
-with open('style.css') as f:
+with open('app/style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     st.title('mi-project')
@@ -30,19 +30,19 @@ with open('style.css') as f:
 
     st.markdown("""
                 It's hard to communicate.
-                
+
                 How do you know what the other person means to say? Do you fully understand
                 what they mean? Can you get your message accross based on somone's response?
-                
+
                 Mi-person was created with the intent of helping people to identify the
-                feelings behind any text, where understanding the real meaning can be troublesome, 
-                due to the lack of context and voice intonation. Mi-person can help you understand 
+                feelings behind any text, where understanding the real meaning can be troublesome,
+                due to the lack of context and voice intonation. Mi-person can help you understand
                 sentences from simple casual text messages, to tweets, formal emails, even a simple
-                interaction with chatbots. 
-                
+                interaction with chatbots.
+
                 As an open source web application, mi-person, can also be used to translate datasets making
-                it possible to classify large-scale texts in one-go. 
-                
+                it possible to classify large-scale texts in one-go.
+
                 Based on the words and context of each text, mi-person translates in a simplified way the
                 sentiments presented in text format in three main categories: Negative, Neutral and Positive.
                 These three categories are composed in our application, at the moment, of 27 different emotions, which can be analyzed as below:
@@ -60,19 +60,19 @@ with open('style.css') as f:
             "nav-link-selected": {"background-color": "rgba(89, 179, 103, 0.571)"}}
     )
     if selected2 == 'POSITIVE':
-        image = Image.open('tab_positive.jpeg')
+        image = Image.open('app/tab_positive.jpeg')
         st.image(image, width=730)
 
     if selected2 == 'NEGATIVE':
-        image = Image.open('tab_negative.jpeg')
+        image = Image.open('app/tab_negative.jpeg')
         st.image(image, width=730)
 
     if selected2 == 'NEUTRAL':
-        image = Image.open('tab_neutral.jpeg')
+        image = Image.open('app/tab_neutral.jpeg')
         st.image(image, width=730)
 
     st.markdown("""
-             Check out our github repository - 
+             Check out our github repository -
              [mi-person repository](https://github.com/tatchiwiggers/mi-person)
              """
              )

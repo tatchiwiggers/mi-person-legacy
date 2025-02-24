@@ -21,7 +21,7 @@ st.set_page_config(
 
 # HOME_PAGE
 
-with open('style.css') as f:
+with open('app/style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 
@@ -52,7 +52,7 @@ with open('style.css') as f:
         # object gives a sentiment dictionary.
         # which contains pos, neg, neu, and compound scores.
         sentiment_dict = sid_obj.polarity_scores(sentence)
-        
+
         print("Overall sentiment: ", sentiment_dict)
         print("sentence was rated as ", sentiment_dict['neg']*100, "% Negative")
         print("sentence was rated as ", sentiment_dict['neu']*100, "% Neutral")
@@ -65,13 +65,13 @@ with open('style.css') as f:
 
         # sentiment_scores(sentence)
         return sentiment_dict
-    
+
 
     if st.button("Do the magic"):
         # res = requests.post(url ='http://127.0.0.1:8504/mi-person', data=json.dumps(user_input))
-        
+
         sentiment_dict = sentiment_scores(sentence)
-        
+
         if sentiment_dict['compound'] >= 0.05 :
             res = "Positive, say something nice back :)"
 
@@ -80,8 +80,8 @@ with open('style.css') as f:
 
         else :
             res = "Neutral, so no problem here ;)"
-            
-        
+
+
         if res.split(',')[0] == 'Positive':
             # st.subheader('Sucesso')
             st.success(f'sentiment: {res}')
@@ -96,7 +96,7 @@ with open('style.css') as f:
             st.error('The model could not evaluate any emotion in the text')
 
         st.subheader('Individual percentages per emotion')
-        
+
         s = pd.DataFrame([sentiment_dict])
         s = s[['neg', 'pos', 'neu']]
         s = s.rename(columns={'neg': 'negative', 'pos': 'positive', 'neu': 'neutral'}).reset_index(drop=True)
@@ -115,8 +115,8 @@ with open('style.css') as f:
 
         # Display a static table
         st.table(s)
-    
-    
+
+
         st.markdown('To know more about our product:')
         # st.markdown('[**about mi-person**](http://192.168.0.8:8501/about-us)',False)
         st.write("check out our github repository @ [mi-person repository](https://github.com/tatchiwiggers/mi-person)")

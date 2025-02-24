@@ -5,7 +5,7 @@ st.set_page_config(
     layout="centered", # wide
     initial_sidebar_state="auto") # auto - prefixed bar
 
-with open('style.css') as f:
+with open('app/style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 

@@ -10,7 +10,7 @@ st.set_page_config(
     layout="centered", # wide
     initial_sidebar_state="auto") # auto - prefixed bar
 
-with open('style.css') as f:
+with open('app/style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     st.title('mi-analysis')
@@ -107,7 +107,7 @@ with open('style.css') as f:
                  import a csv extansion file, displaying all texts in column A,
                  one for wich line. Below the model csv file to download.''')
 
-        with open("csv_model.csv", "r") as file:
+        with open("app/csv_model.csv", "r") as file:
             st.download_button(
                 label="Download CSV File",
                 data=file,
